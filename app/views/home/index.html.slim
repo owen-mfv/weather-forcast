@@ -1,0 +1,24 @@
+h1 Current Ho Chi Minh city weather
+
+- if @weather_data.status != 200
+  p Sorry! The service is unavailable at the moment.
+- else
+  - body_data = @weather_data.body
+
+  div style="display: flex; align-items: center;"
+    img src="https:#{body_data["current"]["condition"]["icon"]}"
+    span
+      = body_data["current"]["condition"]["text"]
+  ul
+    li
+      p
+        | #{body_data["current"]["temp_c"]} &#8451;
+    li
+      p
+        | Humidity: #{body_data["current"]["humidity"]}%
+    li
+      p
+        | UV index: #{body_data["current"]["uv"]} of 10
+    li
+      p Feels like #{body_data["current"]["feelslike_c"]} &#8451;
+
